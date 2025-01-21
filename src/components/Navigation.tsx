@@ -2,6 +2,16 @@ import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
+const scrollToSection = (id: string) => {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }
+};
+
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -17,15 +27,24 @@ const Navigation = () => {
           
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-4">
-              <a href="#features" className="text-gray-700 hover:text-primary px-3 py-2 rounded-md">
+              <button 
+                onClick={() => scrollToSection('features')}
+                className="text-gray-700 hover:text-primary px-3 py-2 rounded-md"
+              >
                 Features
-              </a>
-              <a href="#pricing" className="text-gray-700 hover:text-primary px-3 py-2 rounded-md">
+              </button>
+              <button 
+                onClick={() => scrollToSection('pricing')}
+                className="text-gray-700 hover:text-primary px-3 py-2 rounded-md"
+              >
                 Pricing
-              </a>
-              <a href="#docs" className="text-gray-700 hover:text-primary px-3 py-2 rounded-md">
+              </button>
+              <button 
+                onClick={() => scrollToSection('docs')}
+                className="text-gray-700 hover:text-primary px-3 py-2 rounded-md"
+              >
                 Docs
-              </a>
+              </button>
               <Button className="bg-primary hover:bg-primary/90">
                 Try Free
               </Button>
@@ -46,24 +65,33 @@ const Navigation = () => {
       {isOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a
-              href="#features"
-              className="text-gray-700 hover:text-primary block px-3 py-2 rounded-md"
+            <button
+              onClick={() => {
+                scrollToSection('features');
+                setIsOpen(false);
+              }}
+              className="text-gray-700 hover:text-primary block px-3 py-2 rounded-md w-full text-left"
             >
               Features
-            </a>
-            <a
-              href="#pricing"
-              className="text-gray-700 hover:text-primary block px-3 py-2 rounded-md"
+            </button>
+            <button
+              onClick={() => {
+                scrollToSection('pricing');
+                setIsOpen(false);
+              }}
+              className="text-gray-700 hover:text-primary block px-3 py-2 rounded-md w-full text-left"
             >
               Pricing
-            </a>
-            <a
-              href="#docs"
-              className="text-gray-700 hover:text-primary block px-3 py-2 rounded-md"
+            </button>
+            <button
+              onClick={() => {
+                scrollToSection('docs');
+                setIsOpen(false);
+              }}
+              className="text-gray-700 hover:text-primary block px-3 py-2 rounded-md w-full text-left"
             >
               Docs
-            </a>
+            </button>
             <div className="pt-2">
               <Button className="w-full bg-primary hover:bg-primary/90">
                 Try Free
