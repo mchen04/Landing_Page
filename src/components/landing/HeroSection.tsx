@@ -1,8 +1,15 @@
 import { Button } from '@/components/ui/button';
 import { Terminal, Sparkles, Code2 } from 'lucide-react';
+import { motion, useAnimation } from 'framer-motion';
+import { useEffect } from 'react';
 
 const HeroSection = () => (
-  <section className="hero-gradient pt-32 pb-20 px-4 relative overflow-hidden min-h-[90vh] flex items-center">
+  <motion.section 
+    className="hero-gradient pt-32 pb-20 px-4 relative overflow-hidden min-h-[90vh] flex items-center"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.8 }}
+  >
     {/* Background with grid pattern */}
     <div className="absolute inset-0 bg-grid-white/10" />
     
@@ -15,19 +22,34 @@ const HeroSection = () => (
       </div>
 
       {/* Main heading */}
-      <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-tight">
+      <motion.h1 
+        className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-tight"
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+      >
         Transform Your Code <br className="hidden md:block" />
         Into <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-300 to-purple-300">Living Intelligence</span>
-      </h1>
+      </motion.h1>
 
       {/* Subheading with enhanced description */}
-      <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
+      <motion.p 
+        className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.4 }}
+      >
         DevForge empowers developers with real-time AI analysis, smart collaboration tools, 
         and automated optimization. Write better code, faster.
-      </p>
+      </motion.p>
 
       {/* Feature highlights */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto mb-12">
+      <motion.div 
+        className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto mb-12"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.6 }}
+      >
         {[
           { icon: Code2, text: "Smart Code Analysis" },
           { icon: Terminal, text: "Real-time Optimization" },
@@ -38,10 +60,15 @@ const HeroSection = () => (
             <span>{text}</span>
           </div>
         ))}
-      </div>
+      </motion.div>
 
       {/* CTA buttons */}
-      <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+      <motion.div 
+        className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.8 }}
+      >
         <Button 
           size="lg" 
           className="bg-white text-primary hover:bg-white/90 hover:scale-105 transition-transform px-8 h-14 text-lg"
@@ -55,7 +82,7 @@ const HeroSection = () => (
         >
           Watch Demo
         </Button>
-      </div>
+      </motion.div>
 
       {/* Trust badges */}
       <div className="mt-16 text-white/80 text-sm">
@@ -67,7 +94,7 @@ const HeroSection = () => (
         </div>
       </div>
     </div>
-  </section>
+  </motion.section>
 );
 
 export default HeroSection;
